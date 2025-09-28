@@ -1,0 +1,41 @@
+<div>Weather</div>
+<label htmlFor="forecastcity">Choose a city:</label>
+  <select
+    id="forecastcity"
+    value={{selectedCity}}
+    (change)="onSelectionChange($event)"
+    name="forecastcity"
+  >
+    <option value="undefined" disabled selected>Select a city</option>
+    @for (city of cities; track city.id) {
+        <option value="{{city.name}}">
+        {{ city.name }}
+        </option>
+    }
+</select>
+<div>{{selectedCity}}</div>
+@if(selectedCity) {
+  <div>{{`${latlng?.lat},${latlng?.lng}`}}</div>
+}
+@if(forecast) {
+      <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>C</th>
+          <th>F</th>
+          <th>Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (f of forecast.forecastDays; let index = $index; track index) {
+          <tr>
+            <td>{{`${f.displayDate.month}/${f.displayDate.day}/${f.displayDate.year}`}}</td>
+            <td>{{f.maxTemperature.degrees.toFixed(1)}}</td>
+            <td>{{fahrenheit(f.maxTemperature.degrees).toFixed(1)}}</td>
+            <td>{{f.daytimeForecast.weatherCondition.description.text}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+} 
