@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ConfigService } from './config.service';
 
 export interface Location {
     lat: number;
@@ -9,10 +10,10 @@ export interface Location {
   providedIn: 'root', // Makes the service a singleton and available throughout the application
 })
 export class LocationService {
-  constructor() {}
+  constructor(private config: ConfigService) {}
   async location(city: string): Promise<Location | null> {
     if(!city) return null;
-    const response = await fetch (`https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=AIzaSyAxrr9z3xCFQF0EnawxOCQO7pxosZ1mjAE`);
+    const response = await fetch (`${this.config.getConfig()?.locationApiBaseUrl}?address=${city}&key=${this.config.getConfig()?.locationApiKey}`);
     const data = await response.json();
     if(data.status !== 'OK') return null;
     const l = data.results[0].geometry.location;

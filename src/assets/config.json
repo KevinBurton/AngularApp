@@ -1,0 +1,6 @@
+{  
+    "locationApiBaseUrl": "https://maps.googleapis.com/maps/api/geocode/json",
+    "weatherApiBaseUrl": "https://weather.googleapis.com/v1/forecast/days:lookup",
+    "locationApiKey": "AIzaSyAxrr9z3xCFQF0EnawxOCQO7pxosZ1mjAE",
+    "weatherApiKey": "AIzaSyAxrr9z3xCFQF0EnawxOCQO7pxosZ1mjAE"
+}

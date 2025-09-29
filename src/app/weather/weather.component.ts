@@ -30,8 +30,11 @@ export class WeatherComponent implements OnInit {
     { id: 10, name: 'Boston' },
     { id: 11, name: 'Atlanta' },
     { id: 12, name: 'London' },
-    { id: 13, name: 'Paris' }
+    { id: 13, name: 'Paris' },
+    { id: 14, name: 'Berlin' },
+    { id: 15, name: 'Belfast' }
   ];
+
 
   constructor(private location: LocationService, private weather: WeatherService) { 
   }
